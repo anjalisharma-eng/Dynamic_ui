@@ -19,7 +19,7 @@ Rectangle {
         Text {
             text: "System Info"
             color: "#ffffff"
-            font.pixelSize: 20
+            font.pixelSize: 17
             font.bold: true
             horizontalAlignment: Text.AlignHCenter
             width: parent.width
@@ -28,25 +28,25 @@ Rectangle {
         Text {
             text: "Speed: " + infoData.speed.toFixed(1) + " knots"
             color: "#ffb300"
-            font.pixelSize: 16
+            font.pixelSize: 14
         }
 
         Text {
             text: "Heading: " + infoData.heading.toFixed(0) + "°"
             color: "#03a9f4"
-            font.pixelSize: 16
+            font.pixelSize: 14
         }
 
         Text {
             text: "Wind: " + infoData.windSpeed.toFixed(1) + " m/s"
             color: "#8bc34a"
-            font.pixelSize: 16
+            font.pixelSize: 14
         }
 
         Text {
             text: "Temperature: " + infoData.temperature.toFixed(1) + " °C"
             color: "#f44336"
-            font.pixelSize: 16
+            font.pixelSize: 14
         }
     }
 

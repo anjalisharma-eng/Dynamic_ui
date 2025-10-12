@@ -1,125 +1,177 @@
+////import QtQuick 2.15
+////import QtQuick.Controls 2.15
+////import QtCharts
+
+////Rectangle {
+////    id: forecastPanel
+////    width: 640
+////    height: 480
+////    color: "#1e1f26"
+////    radius: 8
+////    border.color: "#1e2c63"
+////    border.width: 2
+
+////    property var forecastData: ({ series: null })   // optional: external data source
+
+////    ChartView {
+////        id: chart
+////        anchors.fill: parent
+////        antialiasing: true
+////        theme: ChartView.ChartThemeDark
+////        backgroundColor: "#1e1f26"
+////        legend.visible: true
+////        legend.labelColor: "#cfd8dc"
+////        legend.alignment: Qt.AlignTop
+
+////        // ===== X-Axis (Time / Hour) =====
+////        ValueAxis {
+////            id: xAxis
+////            min: 0
+////            max: 48
+////            tickCount: 9
+////            labelFormat: "%.0fh"
+////            labelsColor: "#cfd8dc"
+////            gridLineColor: "#37474f"
+////        }
+
+////        // ===== Y-Axis (Power in MWh) =====
+////        ValueAxis {
+////            id: yAxis
+////            min: 0
+////            max: 9
+////            tickCount: 10
+////            labelsColor: "#cfd8dc"
+////            gridLineColor: "#37474f"
+////        }
+
+////        // ===== Blue Bars: Planned Power =====
+////        BarSeries {
+////            id: barSeries
+////            axisX: xAxis
+////            axisY: yAxis
+////            name: "Power [MWh] forecast @ planned heading"
+
+////            BarSet {
+////                color: "#2196f3"
+////                label: "Planned"
+////                borderColor: "transparent"
+////                values: [6.3, 6.1, 6.4, 6.5, 6.2, 6.0, 6.3, 6.7, 6.4, 6.2, 6.5, 6.1]
+////            }
+////        }
+
+////        // ===== Red Line: Best Heading =====
+////        LineSeries {
+////            id: lineSeries
+////            axisX: xAxis
+////            axisY: yAxis
+////            name: "Power [MWh] @ best heading"
+////            color: "#e53935"
+////            width: 2
+////            useOpenGL: true
+
+////            XYPoint { x: 0;  y: 3.2 }
+////            XYPoint { x: 6;  y: 3.4 }
+////            XYPoint { x: 12; y: 3.6 }
+////            XYPoint { x: 18; y: 3.8 }
+////            XYPoint { x: 24; y: 3.9 }
+////            XYPoint { x: 30; y: 4.0 }
+////            XYPoint { x: 36; y: 4.1 }
+////            XYPoint { x: 42; y: 4.2 }
+////            XYPoint { x: 48; y: 4.3 }
+////        }
+
+////        Component.onCompleted: {
+////            // optional: dynamically attach external data series
+////            if (forecastData.series)
+////                chart.addSeries(forecastData.series, xAxis, yAxis)
+
+////            // force correct scaling (avoid negative values)
+////            yAxis.min = 0
+////            yAxis.max = 9
+////        }
+////    }
+
+////    // === Optional dynamic function for runtime updates ===
+////    function addSeries() {
+////        if (forecastData.series)
+////            chart.addSeries(forecastData.series, xAxis, yAxis)
+////    }
+////}
+
+/////*##^##
+////Designer {
+////    D{i:0;autoSize:true;height:480;width:640}
+////}
+////##^##*/
 //import QtQuick 2.15
 //import QtQuick.Controls 2.15
 //import QtCharts 2.15
 
-////Rectangle {
-////    id: forecastPanel
-////    width: 400
-////    height: 250
-////    color: "#1b1f2a"
-////    radius: 10
-////    border.color: "#00bcd4"
-////    border.width: 2
-
-////    Column {
-////        anchors.fill: parent
-////        anchors.margins: 10
-////        spacing: 8
-
-////        property string params: ""
-
-////        Text {
-////            text: "Forecast Data"
-////            color: "#ffffff"
-////            font.pixelSize: 20
-////            font.bold: true
-////        }
-
-////        ChartView {
-////            id: chart
-////            width: parent.width - 20
-////            height: 180
-////            antialiasing: true
-////            backgroundColor: "transparent"
-////            legend.visible: false
-
-////            ValueAxis {
-////                id: yAxis
-////                min: 0
-////                max: 100
-////                labelsColor: "#ffffff"
-////            }
-
-////            ValueAxis {
-////                id: xAxis
-////                min: 0
-////                max: 10
-////                labelsColor: "#ffffff"
-////            }
-
-////            LineSeries {
-////                id: forecastSeries
-////                axisX: xAxis
-////                axisY: yAxis
-////                color: "#03a9f4"
-////                width: 2
-
-////                // Dynamic data update
-////                Component.onCompleted: {
-////                    for (let i = 0; i < forecastData.forecastValues.length; ++i)
-////                        append(i, forecastData.forecastValues[i])
-////                }
-
-////                Connections {
-////                    target: forecastData
-////                    function onDataChanged() {
-////                        clear()
-////                        for (let i = 0; i < forecastData.forecastValues.length; ++i)
-////                            append(i, forecastData.forecastValues[i])
-////                    }
-////                }
-////            }
-////        }
-
-////        Row {
-////            spacing: 20
-
-////            Text { text: "Min: " + forecastData.minValue.toFixed(1); color: "#8bc34a" }
-////            Text { text: "Avg: " + forecastData.avgValue.toFixed(1); color: "#ffc107" }
-////            Text { text: "Max: " + forecastData.maxValue.toFixed(1); color: "#f44336" }
-////        }
-////    }
-
 //Rectangle {
-//    width: 1140
-//    height: 150
-//    color: "transparent"
-//    property string params: ""
+//    id: forecastPanel
+//    width: 640
+//    height: 480
+//    color: "#1e1f26"
+//    radius: 8
+//    border.color: "#1e2c63"
+//    border.width: 2
 
-//    ChartView {
+//    // Delay chart loading until visible to avoid OpenGL init crash
+//    property bool chartReady: false
+
+//    Component.onCompleted: {
+//        // Wait a short time so the window's scenegraph is fully initialized
+//        Qt.callLater(() => chartReady = true)
+//    }
+
+//    Loader {
+//        id: chartLoader
 //        anchors.fill: parent
-//        theme: ChartView.ChartThemeDark
-//        antialiasing: true
-//        legend.visible: false
+//        active: forecastPanel.chartReady
+//        asynchronous: true
 
-//        ValueAxis {
-//            id: axisX
-//            min: 0
-//            max: 10
-//        }
+//        sourceComponent: ChartView {
+//            id: chart
+//            anchors.fill: parent
+//            antialiasing: true
+//            theme: ChartView.ChartThemeDark
+//            backgroundColor: "#1e1f26"
+//            legend.visible: true
+//            legend.labelColor: "#cfd8dc"
+//            legend.alignment: Qt.AlignTop
 
-//        ValueAxis {
-//            id: axisY
-//            min: 0
-//            max: 100
-//        }
+//            ValueAxis { id: xAxis; min: 0; max: 48; tickCount: 9; labelsColor: "#cfd8dc" }
+//            ValueAxis { id: yAxis; min: 0; max: 9; tickCount: 10; labelsColor: "#cfd8dc" }
 
-//        LineSeries {
-//            id: forecastSeries
-//            axisX: axisX
-//            axisY: axisY
-//            color: "#00e676"
-
-//            Component.onCompleted: {
-//                forecastData.onDataChanged.connect(updateData)
-//                updateData()
+//            BarSeries {
+//                id: barSeries
+//                axisX: xAxis
+//                axisY: yAxis
+//                name: "Power [MWh] forecast @ planned heading"
+//                BarSet {
+//                    label: "Planned"
+//                    color: "#2196f3"
+//                    borderColor: "transparent"
+//                    values: [6.3, 6.1, 6.4, 6.5, 6.2, 6.0, 6.3, 6.7, 6.4, 6.2, 6.5, 6.1]
+//                }
 //            }
 
-//            function updateData() {
-//                clear()
-//                let values = forecastData.forecastValues
-//                for (let i = 0; i < values.length; ++i)
-//                    append(i, values[i])
+//            LineSeries {
+//                id: lineSeries
+//                axisX: xAxis
+//                axisY: yAxis
+//                name: "Power [MWh] @ best heading"
+//                color: "#e53935"
+//                width: 2
+//                XYPoint { x: 0;  y: 3.2 }
+//                XYPoint { x: 6;  y: 3.4 }
+//                XYPoint { x: 12; y: 3.6 }
+//                XYPoint { x: 18; y: 3.8 }
+//                XYPoint { x: 24; y: 3.9 }
+//                XYPoint { x: 30; y: 4.0 }
+//                XYPoint { x: 36; y: 4.1 }
+//                XYPoint { x: 42; y: 4.2 }
+//                XYPoint { x: 48; y: 4.3 }
 //            }
 //        }
 //    }
@@ -130,44 +182,99 @@ import QtCharts 2.15
 
 Rectangle {
     id: forecastPanel
-    color: "transparent"
+    color: "#1e1f26"
     radius: 8
-    border.color: "#00bcd4"
-    border.width: 1
+    border.color: "#1e2c63"
+    border.width: 2
 
-    ChartView {
+    property bool chartReady: false
+
+    Component.onCompleted: Qt.callLater(() => chartReady = true)
+
+    Loader {
+        id: chartLoader
         anchors.fill: parent
-        theme: ChartView.ChartThemeDark
-        antialiasing: true
-        legend.visible: false
+        active: forecastPanel.chartReady
+        asynchronous: true
 
-        ValueAxis {
-            id: xAxis
-            min: 0
-            max: 10
+        sourceComponent: ChartView {
+            id: chart
+            anchors.fill: parent
+            antialiasing: true
+            theme: ChartView.ChartThemeDark
+            backgroundColor: "#1e1f26"
+            legend.visible: true
+            legend.labelColor: "#cfd8dc"
+            legend.alignment: Qt.AlignTop
+
+            // X-axis (time or intervals)
+            ValueAxis {
+                id: xAxis
+                min: 0
+                max: 9
+                tickCount: 10
+                labelsColor: "#cfd8dc"
+                gridLineColor: "#37474f"
+            }
+
+            // Y-axis (MWh)
+            ValueAxis {
+                id: yAxis
+                min: 0
+                max: 100
+                tickCount: 6
+                labelsColor: "#cfd8dc"
+                gridLineColor: "#37474f"
+            }
+
+            // --------------------------
+            // Bar Series (Planned Power)
+            // --------------------------
+            BarSeries {
+                id: barSeries
+                axisX: xAxis
+                axisY: yAxis
+                name: "Planned Power [MWh]"
+                BarSet {
+                    id: plannedSet
+                    label: "Planned"
+                    color: "#2196f3"
+                    borderColor: "transparent"
+                    values: [65, 70, 68, 72, 75, 73, 77, 78, 80, 76]
+                }
+            }
+
+            // --------------------------
+            // Line Series (Actual Forecast)
+            // --------------------------
+            LineSeries {
+                id: forecastLine
+                axisX: xAxis
+                axisY: yAxis
+                name: "Forecast Power [MWh]"
+                color: "#e53935"
+                width: 2
+            }
+
+            // --------------------------
+            // Reactive update from C++
+            // --------------------------
+            Connections {
+                target: forecastData
+                function onDataChanged() {
+                    if (!forecastData.values || forecastData.values.length === 0)
+                        return;
+
+                    forecastLine.clear();
+                    for (let i = 0; i < forecastData.values.length; i++) {
+                        forecastLine.append(i, forecastData.values[i]);
+                    }
+
+                    // Auto-adjust Y-axis dynamically
+                    yAxis.min = Math.min(0, forecastData.minValue - 5);
+                    yAxis.max = forecastData.maxValue + 5;
+                }
+            }
         }
-
-        ValueAxis {
-            id: yAxis
-            min: 0
-            max: 100
-        }
-
-        LineSeries {
-            id: series
-            axisX: xAxis
-            axisY: yAxis
-            useOpenGL: true
-            color: "#00e676"
-            width: 2
-            // The series comes directly from C++
-            Component.onCompleted: forecastPanel.addSeries()
-        }
-    }
-
-    function addSeries() {
-        if (forecastData.series)
-            chart.addSeries(forecastData.series, xAxis, yAxis)
     }
 }
-

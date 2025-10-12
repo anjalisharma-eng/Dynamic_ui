@@ -1,8 +1,19 @@
+#include <QCoreApplication>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QTimer>
 #include <QDebug>
+#include <QFile>
+#include <QQuickWindow>
+#include <QSGRendererInterface>
+
+#include <QtCharts/QChartView>
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QLineSeries>
+#include <QtCharts/QValueAxis>
+#include <QtCharts/QCategoryAxis>
+QT_USE_NAMESPACE
 
 #include "ConfigLoader.h"
 #include "CompassData.h"
@@ -13,40 +24,42 @@
 
 int main(int argc, char *argv[])
 {
+    QQuickWindow::setSceneGraphBackend("software");
+    QCoreApplication::setAttribute(Qt::AA_UseSoftwareOpenGL, true);
+
     QGuiApplication app(argc, argv);
+
+    qputenv("QML_DISABLE_DISK_CACHE", "1");
+    qputenv("QT_QUICK_BACKEND", "software");
+    qputenv("QT_CHARTS_USE_OPENGL", "0");
+
     QQmlApplicationEngine engine;
 
-    // =========================
-    // 1. Instantiate Backends
-    // =========================
-    ConfigLoader configLoader;
-    CompassData compassData;
-    ThrusterData thrusterData;
-    InfoData infoData;
-    PowerData powerData;
-    ForecastData forecastData;
+    QString backend = QQuickWindow::sceneGraphBackend();
+    qDebug() << "Scene Graph Backend:" << backend;
 
-    // =========================
-    // 2. Expose C++ objects to QML
-    // =========================
-    engine.rootContext()->setContextProperty("configLoader", &configLoader);
-    engine.rootContext()->setContextProperty("compassData", &compassData);
-    engine.rootContext()->setContextProperty("thrusterData", &thrusterData);
-    engine.rootContext()->setContextProperty("infoData", &infoData);
-    engine.rootContext()->setContextProperty("powerData", &powerData);
-    engine.rootContext()->setContextProperty("forecastData", &forecastData);
+    engine.addImportPath("C:/Qt/6.5.3/mingw_64/qml");
+    qmlRegisterModule("QtCharts", 2, 15);
 
-    // =========================
-    // 3. Load XML configuration (Layout)
-    // =========================
-    if (!configLoader.loadConfig(":/Dynamic_Dashboard/Config/Ui_Config.xml")) {
+    auto configLoader = new ConfigLoader(&app);
+    auto compassData = new CompassData(&app);
+    auto thrusterData = new ThrusterData(&app);
+    auto infoData = new InfoData(&app);
+    auto powerData = new PowerData(&app);
+    auto forecastData = new ForecastData(&app);
+
+    engine.rootContext()->setContextProperty("configLoader", configLoader);
+    engine.rootContext()->setContextProperty("compassData", compassData);
+    engine.rootContext()->setContextProperty("thrusterData", thrusterData);
+    engine.rootContext()->setContextProperty("infoData", infoData);
+    engine.rootContext()->setContextProperty("powerData", powerData);
+    engine.rootContext()->setContextProperty("forecastData", forecastData);
+
+    if (!configLoader->loadConfig(":/Dynamic_Dashboard/Config/Ui_Config.xml")) {
         qCritical() << "Failed to load UI configuration!";
         return -1;
     }
 
-    // =========================
-    // 4. Load QML UI after all data sources are ready
-    // =========================
     const QUrl mainQmlUrl(u"qrc:/Dynamic_Dashboard/UI/main.qml"_qs);
     QObject::connect(
         &engine, &QQmlApplicationEngine::objectCreated,
@@ -56,6 +69,8 @@ int main(int argc, char *argv[])
         },
         Qt::QueuedConnection
     );
+
+    qDebug() << "Loading main QML:" << mainQmlUrl.toString();
     engine.load(mainQmlUrl);
 
     if (engine.rootObjects().isEmpty()) {
@@ -63,26 +78,25 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    // =========================
-    // 5. Start periodic backend updates (C++-only simulation)
-    // =========================
-
-    // --- Compass rotation ---
     QTimer compassTimer;
-    QObject::connect(&compassTimer, &QTimer::timeout, &compassData, &CompassData::updateAngle);
-    compassTimer.start(100); // updates every 100 ms
+    QObject::connect(&compassTimer, &QTimer::timeout, compassData, &CompassData::updateAngle);
+    compassTimer.start(100);
 
-    // --- Other subsystem data updates ---
-    QTimer::singleShot(1000, [&]() {
+    QTimer::singleShot(2000, &app, [=]() {
         qDebug() << "Starting backend updates...";
-        thrusterData.startUpdates();
-        infoData.startUpdates();
-        powerData.startUpdates();
-        forecastData.startUpdates();
+        try {
+            thrusterData->startUpdates();
+            infoData->startUpdates();
+            powerData->startUpdates();
+            forecastData->startUpdates();
+        } catch (...) {
+            qCritical() << "Exception during backend startup!";
+        }
     });
 
-    // =========================
-    // 6. Run application
-    // =========================
+    QObject::connect(&app, &QCoreApplication::aboutToQuit, []() {
+        qDebug() << "Application exiting.";
+    });
+
     return app.exec();
 }

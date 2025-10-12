@@ -3,8 +3,6 @@ import QtQuick.Controls 2.15
 
 Rectangle {
     id: powerPanel
-    width: 300
-    height: 150
     color: "#1f1f29"
     radius: 10
     border.color: "#03a9f4"

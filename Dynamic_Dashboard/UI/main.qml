@@ -19,7 +19,6 @@ ApplicationWindow {
 
     Rectangle {
         id: dashboard
-        anchors.topMargin: 3
         anchors.fill: parent
         color: "transparent"
 
@@ -29,42 +28,71 @@ ApplicationWindow {
             anchors.margins: 20 * scaleFactor
             rowSpacing: 20 * scaleFactor
             columnSpacing: 20 * scaleFactor
-            columns: 2
+            columns: 3
+            rows: 4
 
-            Repeater {
-                id: dynamicRepeater
-                model: configLoader.components
+            // Compass — spans 3 rows, first column
+            Loader {
+                id: compassPanel
+                source: "qrc:/Dynamic_Dashboard/UI/CompassPanel.qml"
+                Layout.row: 0
+                Layout.column: 0
+                Layout.rowSpan: 3
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.preferredWidth: parent.width * 0.40
+            }
 
-                delegate: Loader {
-                    id: panelLoader
-                    source: modelData.source
-                    property real scale: scaleFactor
+            // Thruster — spans 3 rows, middle column
+            Loader {
+                id: thrusterPanel
+                source: "qrc:/Dynamic_Dashboard/UI/ThrusterPanel.qml"
+                Layout.row: 0
+                Layout.column: 1
+                Layout.rowSpan: 3
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.preferredWidth: parent.width * 0.38
+            }
 
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    Layout.row: modelData.row ?? Math.floor(index / layout.columns)
-                                                 Layout.column: modelData.col ?? index % layout.columns
+            // Power — bottom left (smaller height)
+            Loader {
+                id: powerPanel
+                source: "qrc:/Dynamic_Dashboard/UI/PowerPanel.qml"
+                Layout.row: 3
+                Layout.column: 0
+                Layout.fillWidth: true
+                Layout.fillHeight: false
+                Layout.preferredWidth: parent.width * 0.40
+                Layout.preferredHeight: parent.height * 0.18   // smaller bottom row
+            }
 
-                                                                                 onLoaded: if (item && item.hasOwnProperty("scale")) item.scale = scale
+            // Info — bottom middle (same smaller height)
+            Loader {
+                id: infoPanel
+                source: "qrc:/Dynamic_Dashboard/UI/InfoPanel.qml"
+                Layout.row: 3
+                Layout.column: 1
+                Layout.fillWidth: true
+                Layout.fillHeight: false
+                Layout.preferredWidth: parent.width * 0.38
+                Layout.preferredHeight: parent.height * 0.18   // same height
+            }
 
-                    onStatusChanged: {
-                        if (status === Loader.Error)
-                            console.error("❌ Error loading:", modelData.source, ":", panelLoader.errorString)
-                        else if (status === Loader.Ready)
-                            console.log("✅ Loaded", modelData.source, "at", Layout.row, Layout.column)
-                    }
-                }
+            // System Summary — right column, spans all rows
+            Loader {
+                id: summaryPanel
+                source: "qrc:/Dynamic_Dashboard/UI/SummaryPanel.qml"
+                Layout.row: 0
+                Layout.column: 2
+                Layout.rowSpan: 4
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.preferredWidth: parent.width * 0.22
             }
         }
-    }
 
-//    Text {
-//        text: "Dynamic Ship System Dashboard"
-//        anchors.top: parent.top
-//        anchors.horizontalCenter: parent.horizontalCenter
-//        anchors.topMargin: 8
-//        color: "#00eaff"
-//        font.pixelSize: 22 * scaleFactor
-//        font.bold: true
-//    }
+
+
+    }
 }

@@ -1,9 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <Dashboard>
-    <Component source="qrc:/Dynamic_Dashboard/UI/CompassPanel.qml" row="0" col="0" widthRatio="1.2" heightRatio="1.0"/>
-    <!--<Component source="qrc:/Dynamic_Dashboard/UI/ThrusterPanel.qml" row="0" col="1"/>-->
-    <Component source="qrc:/Dynamic_Dashboard/UI/InfoPanel.qml" row="0" col="1" widthRatio="0.8" heightRatio="1.0"/>
-<!--    <Component source="qrc:/Dynamic_Dashboard/UI/PowerPanel.qml" row="1" col="0"/>
-    <Component source="qrc:/Dynamic_Dashboard/UI/SummaryPanel.qml" row="1" col="1"/>
-    <Component source="qrc:/Dynamic_Dashboard/UI/BarGraphPanel.qml" row="1" col="2"/>-->
+    <!-- Compass spans 2 rows -->
+    <Component source="qrc:/Dynamic_Dashboard/UI/CompassPanel.qml" row="0" col="0" rowSpan="2" />
+
+    <!-- Thruster next to compass -->
+    <Component source="qrc:/Dynamic_Dashboard/UI/ThrusterPanel.qml" row="0" col="1" />
+
+    <!-- Info below compass -->
+    <Component source="qrc:/Dynamic_Dashboard/UI/InfoPanel.qml" row="2" col="0" />
+
+    <!-- Summary panel below thruster -->
+    <Component source="qrc:/Dynamic_Dashboard/UI/SummaryPanel.qml" row="1" col="1" />
+
+    <!-- Power panel at the bottom-right -->
+    <Component source="qrc:/Dynamic_Dashboard/UI/PowerPanel.qml" row="2" col="1" />
 </Dashboard>

@@ -4,8 +4,8 @@ import QtQuick.Layouts 1.15
 
 Rectangle {
     id: summaryPanel
-    width: 800
-    height: 200
+    width: 400
+    height: 800
     radius: 10
     color: "#1e1e2e"
     border.color: "#00bcd4"
@@ -18,8 +18,9 @@ Rectangle {
 
     ColumnLayout {
         anchors.fill: parent
-        anchors.margins: 12
-        spacing: 8
+        anchors.margins: 20
+        spacing: 15
+        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
         Text {
             text: "System Summary"
@@ -29,23 +30,22 @@ Rectangle {
             Layout.alignment: Qt.AlignHCenter
         }
 
-        GridLayout {
-            columns: 2
-            rowSpacing: 6
-            columnSpacing: 40
+        ColumnLayout {
+            Layout.fillWidth: true
             Layout.alignment: Qt.AlignHCenter
+            spacing: 12
 
             // Power Summary
             Rectangle {
-                width: 350; height: 70; radius: 8
+                Layout.alignment: Qt.AlignHCenter
+                Layout.preferredWidth: parent.width * 0.85   // reduced width (fit inside)
+                height: 65
+                radius: 8
                 color: "#24243e"
                 border.color: "#0088cc"
                 Column {
                     anchors.centerIn: parent
                     spacing: 4
-
-                    property string params: ""
-
                     Text { text: "Power Available:"; color: "#aaaaaa"; font.pixelSize: 14 }
                     Text {
                         id: powerText
@@ -59,7 +59,10 @@ Rectangle {
 
             // Thruster Summary
             Rectangle {
-                width: 350; height: 70; radius: 8
+                Layout.alignment: Qt.AlignHCenter
+                Layout.preferredWidth: parent.width * 0.85
+                height: 65
+                radius: 8
                 color: "#24243e"
                 border.color: "#ff7f50"
                 Column {
@@ -70,7 +73,7 @@ Rectangle {
                         id: thrusterText
                         text: thrusterData ? thrusterData.trend : "--"
                         color: thrusterData && thrusterData.trend === "Up" ? "#00ff66"
-                               : thrusterData && thrusterData.trend === "Down" ? "#ff3333" : "#ffff66"
+                              : thrusterData && thrusterData.trend === "Down" ? "#ff3333" : "#ffff66"
                         font.pixelSize: 18
                         font.bold: true
                     }
@@ -79,7 +82,10 @@ Rectangle {
 
             // Forecast Summary
             Rectangle {
-                width: 350; height: 70; radius: 8
+                Layout.alignment: Qt.AlignHCenter
+                Layout.preferredWidth: parent.width * 0.85
+                height: 65
+                radius: 8
                 color: "#24243e"
                 border.color: "#33cc33"
                 Column {
@@ -98,7 +104,10 @@ Rectangle {
 
             // Info Summary
             Rectangle {
-                width: 350; height: 70; radius: 8
+                Layout.alignment: Qt.AlignHCenter
+                Layout.preferredWidth: parent.width * 0.85
+                height: 65
+                radius: 8
                 color: "#24243e"
                 border.color: "#3399ff"
                 Column {
@@ -117,7 +126,6 @@ Rectangle {
         }
     }
 
-    // Smooth pulsing border animation
     SequentialAnimation on border.color {
         loops: Animation.Infinite
         ColorAnimation { to: "#00bcd4"; duration: 1000 }

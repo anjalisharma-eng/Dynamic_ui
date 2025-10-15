@@ -1,0 +1,11 @@
+{
+    "IID": "com.anjali.DynamicDashboard.IPanelPlugin/1.0",
+    "ClassName": "CompassPanelPlugin",
+    "Version": "1.0",
+    "Name": "Compass Panel Plugin",
+    "Description": "Provides the Compass Panel QML component for the Dynamic Dashboard.",
+    "Author": "Anjali",
+    "License": "LGPLv3",
+    "Url": "https://example.com/anjali/compassplugin",
+    "Dependencies": []
+}

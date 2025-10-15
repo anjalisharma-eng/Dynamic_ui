@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/CompassPanelPlugin">
+        <file>CompassPanel.qml</file>
+        <file>plugin.json</file>
+    </qresource>
+</RCC>

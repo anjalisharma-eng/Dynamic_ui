@@ -34,7 +34,7 @@ ApplicationWindow {
             // Compass — spans 3 rows, first column
             Loader {
                 id: compassPanel
-                source: "qrc:/Dynamic_Dashboard/UI/CompassPanel.qml"
+                source: "qrc:/CompassPanelPlugin/CompassPanel.qml"
                 Layout.row: 0
                 Layout.column: 0
                 Layout.rowSpan: 3

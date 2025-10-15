@@ -1,0 +1,236 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'plugin.cpp'
+**
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.5.3)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include <QtCore/qmetatype.h>
+#include <QtCore/qplugin.h>
+
+#if __has_include(<QtCore/qtmochelpers.h>)
+#include <QtCore/qtmochelpers.h>
+#else
+QT_BEGIN_MOC_NAMESPACE
+#endif
+
+
+#include <memory>
+
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'plugin.cpp' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 68
+#error "This file was generated using the moc from 6.5.3. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+#ifndef Q_CONSTINIT
+#define Q_CONSTINIT
+#endif
+
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
+QT_WARNING_DISABLE_GCC("-Wuseless-cast")
+namespace {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSCompassPanelPluginENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSCompassPanelPluginENDCLASS = QtMocHelpers::stringData(
+    "CompassPanelPlugin"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSCompassPanelPluginENDCLASS_t {
+    uint offsetsAndSizes[2];
+    char stringdata0[19];
+};
+#define QT_MOC_LITERAL(ofs, len) \
+    uint(sizeof(qt_meta_stringdata_CLASSCompassPanelPluginENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSCompassPanelPluginENDCLASS_t qt_meta_stringdata_CLASSCompassPanelPluginENDCLASS = {
+    {
+        QT_MOC_LITERAL(0, 18)   // "CompassPanelPlugin"
+    },
+    "CompassPanelPlugin"
+};
+#undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
+} // unnamed namespace
+
+Q_CONSTINIT static const uint qt_meta_data_CLASSCompassPanelPluginENDCLASS[] = {
+
+ // content:
+      11,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       0,    0, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+       0        // eod
+};
+
+Q_CONSTINIT const QMetaObject CompassPanelPlugin::staticMetaObject = { {
+    QMetaObject::SuperData::link<QObject::staticMetaObject>(),
+    qt_meta_stringdata_CLASSCompassPanelPluginENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSCompassPanelPluginENDCLASS,
+    qt_static_metacall,
+    nullptr,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSCompassPanelPluginENDCLASS_t,
+        // Q_OBJECT / Q_GADGET
+        QtPrivate::TypeAndForceComplete<CompassPanelPlugin, std::true_type>
+    >,
+    nullptr
+} };
+
+void CompassPanelPlugin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    (void)_o;
+    (void)_id;
+    (void)_c;
+    (void)_a;
+}
+
+const QMetaObject *CompassPanelPlugin::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *CompassPanelPlugin::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSCompassPanelPluginENDCLASS.stringdata0))
+        return static_cast<void*>(this);
+    if (!strcmp(_clname, "IPanelPlugin"))
+        return static_cast< IPanelPlugin*>(this);
+    if (!strcmp(_clname, "com.anjali.DynamicDashboard.IPanelPlugin/1.0"))
+        return static_cast< IPanelPlugin*>(this);
+    return QObject::qt_metacast(_clname);
+}
+
+int CompassPanelPlugin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    return _id;
+}
+
+#ifdef QT_MOC_EXPORT_PLUGIN_V2
+static constexpr unsigned char qt_pluginMetaDataV2_CompassPanelPlugin[] = {
+    0xbf, 
+    // "IID"
+    0x02,  0x78,  0x2c,  'c',  'o',  'm',  '.',  'a', 
+    'n',  'j',  'a',  'l',  'i',  '.',  'D',  'y', 
+    'n',  'a',  'm',  'i',  'c',  'D',  'a',  's', 
+    'h',  'b',  'o',  'a',  'r',  'd',  '.',  'I', 
+    'P',  'a',  'n',  'e',  'l',  'P',  'l',  'u', 
+    'g',  'i',  'n',  '/',  '1',  '.',  '0', 
+    // "className"
+    0x03,  0x72,  'C',  'o',  'm',  'p',  'a',  's', 
+    's',  'P',  'a',  'n',  'e',  'l',  'P',  'l', 
+    'u',  'g',  'i',  'n', 
+    // "MetaData"
+    0x04,  0xa9,  0x66,  'A',  'u',  't',  'h',  'o', 
+    'r',  0x66,  'A',  'n',  'j',  'a',  'l',  'i', 
+    0x69,  'C',  'l',  'a',  's',  's',  'N',  'a', 
+    'm',  'e',  0x72,  'C',  'o',  'm',  'p',  'a', 
+    's',  's',  'P',  'a',  'n',  'e',  'l',  'P', 
+    'l',  'u',  'g',  'i',  'n',  0x6c,  'D',  'e', 
+    'p',  'e',  'n',  'd',  'e',  'n',  'c',  'i', 
+    'e',  's',  0x80,  0x6b,  'D',  'e',  's',  'c', 
+    'r',  'i',  'p',  't',  'i',  'o',  'n',  0x78, 
+    0x43,  'P',  'r',  'o',  'v',  'i',  'd',  'e', 
+    's',  ' ',  't',  'h',  'e',  ' ',  'C',  'o', 
+    'm',  'p',  'a',  's',  's',  ' ',  'P',  'a', 
+    'n',  'e',  'l',  ' ',  'Q',  'M',  'L',  ' ', 
+    'c',  'o',  'm',  'p',  'o',  'n',  'e',  'n', 
+    't',  ' ',  'f',  'o',  'r',  ' ',  't',  'h', 
+    'e',  ' ',  'D',  'y',  'n',  'a',  'm',  'i', 
+    'c',  ' ',  'D',  'a',  's',  'h',  'b',  'o', 
+    'a',  'r',  'd',  '.',  0x63,  'I',  'I',  'D', 
+    0x78,  0x2c,  'c',  'o',  'm',  '.',  'a',  'n', 
+    'j',  'a',  'l',  'i',  '.',  'D',  'y',  'n', 
+    'a',  'm',  'i',  'c',  'D',  'a',  's',  'h', 
+    'b',  'o',  'a',  'r',  'd',  '.',  'I',  'P', 
+    'a',  'n',  'e',  'l',  'P',  'l',  'u',  'g', 
+    'i',  'n',  '/',  '1',  '.',  '0',  0x67,  'L', 
+    'i',  'c',  'e',  'n',  's',  'e',  0x66,  'L', 
+    'G',  'P',  'L',  'v',  '3',  0x64,  'N',  'a', 
+    'm',  'e',  0x74,  'C',  'o',  'm',  'p',  'a', 
+    's',  's',  ' ',  'P',  'a',  'n',  'e',  'l', 
+    ' ',  'P',  'l',  'u',  'g',  'i',  'n',  0x63, 
+    'U',  'r',  'l',  0x78,  0x28,  'h',  't',  't', 
+    'p',  's',  ':',  '/',  '/',  'e',  'x',  'a', 
+    'm',  'p',  'l',  'e',  '.',  'c',  'o',  'm', 
+    '/',  'a',  'n',  'j',  'a',  'l',  'i',  '/', 
+    'c',  'o',  'm',  'p',  'a',  's',  's',  'p', 
+    'l',  'u',  'g',  'i',  'n',  0x67,  'V',  'e', 
+    'r',  's',  'i',  'o',  'n',  0x63,  '1',  '.', 
+    '0', 
+    0xff, 
+};
+QT_MOC_EXPORT_PLUGIN_V2(CompassPanelPlugin, CompassPanelPlugin, qt_pluginMetaDataV2_CompassPanelPlugin)
+#else
+QT_PLUGIN_METADATA_SECTION
+Q_CONSTINIT static constexpr unsigned char qt_pluginMetaData_CompassPanelPlugin[] = {
+    'Q', 'T', 'M', 'E', 'T', 'A', 'D', 'A', 'T', 'A', ' ', '!',
+    // metadata version, Qt version, architectural requirements
+    0, QT_VERSION_MAJOR, QT_VERSION_MINOR, qPluginArchRequirements(),
+    0xbf, 
+    // "IID"
+    0x02,  0x78,  0x2c,  'c',  'o',  'm',  '.',  'a', 
+    'n',  'j',  'a',  'l',  'i',  '.',  'D',  'y', 
+    'n',  'a',  'm',  'i',  'c',  'D',  'a',  's', 
+    'h',  'b',  'o',  'a',  'r',  'd',  '.',  'I', 
+    'P',  'a',  'n',  'e',  'l',  'P',  'l',  'u', 
+    'g',  'i',  'n',  '/',  '1',  '.',  '0', 
+    // "className"
+    0x03,  0x72,  'C',  'o',  'm',  'p',  'a',  's', 
+    's',  'P',  'a',  'n',  'e',  'l',  'P',  'l', 
+    'u',  'g',  'i',  'n', 
+    // "MetaData"
+    0x04,  0xa9,  0x66,  'A',  'u',  't',  'h',  'o', 
+    'r',  0x66,  'A',  'n',  'j',  'a',  'l',  'i', 
+    0x69,  'C',  'l',  'a',  's',  's',  'N',  'a', 
+    'm',  'e',  0x72,  'C',  'o',  'm',  'p',  'a', 
+    's',  's',  'P',  'a',  'n',  'e',  'l',  'P', 
+    'l',  'u',  'g',  'i',  'n',  0x6c,  'D',  'e', 
+    'p',  'e',  'n',  'd',  'e',  'n',  'c',  'i', 
+    'e',  's',  0x80,  0x6b,  'D',  'e',  's',  'c', 
+    'r',  'i',  'p',  't',  'i',  'o',  'n',  0x78, 
+    0x43,  'P',  'r',  'o',  'v',  'i',  'd',  'e', 
+    's',  ' ',  't',  'h',  'e',  ' ',  'C',  'o', 
+    'm',  'p',  'a',  's',  's',  ' ',  'P',  'a', 
+    'n',  'e',  'l',  ' ',  'Q',  'M',  'L',  ' ', 
+    'c',  'o',  'm',  'p',  'o',  'n',  'e',  'n', 
+    't',  ' ',  'f',  'o',  'r',  ' ',  't',  'h', 
+    'e',  ' ',  'D',  'y',  'n',  'a',  'm',  'i', 
+    'c',  ' ',  'D',  'a',  's',  'h',  'b',  'o', 
+    'a',  'r',  'd',  '.',  0x63,  'I',  'I',  'D', 
+    0x78,  0x2c,  'c',  'o',  'm',  '.',  'a',  'n', 
+    'j',  'a',  'l',  'i',  '.',  'D',  'y',  'n', 
+    'a',  'm',  'i',  'c',  'D',  'a',  's',  'h', 
+    'b',  'o',  'a',  'r',  'd',  '.',  'I',  'P', 
+    'a',  'n',  'e',  'l',  'P',  'l',  'u',  'g', 
+    'i',  'n',  '/',  '1',  '.',  '0',  0x67,  'L', 
+    'i',  'c',  'e',  'n',  's',  'e',  0x66,  'L', 
+    'G',  'P',  'L',  'v',  '3',  0x64,  'N',  'a', 
+    'm',  'e',  0x74,  'C',  'o',  'm',  'p',  'a', 
+    's',  's',  ' ',  'P',  'a',  'n',  'e',  'l', 
+    ' ',  'P',  'l',  'u',  'g',  'i',  'n',  0x63, 
+    'U',  'r',  'l',  0x78,  0x28,  'h',  't',  't', 
+    'p',  's',  ':',  '/',  '/',  'e',  'x',  'a', 
+    'm',  'p',  'l',  'e',  '.',  'c',  'o',  'm', 
+    '/',  'a',  'n',  'j',  'a',  'l',  'i',  '/', 
+    'c',  'o',  'm',  'p',  'a',  's',  's',  'p', 
+    'l',  'u',  'g',  'i',  'n',  0x67,  'V',  'e', 
+    'r',  's',  'i',  'o',  'n',  0x63,  '1',  '.', 
+    '0', 
+    0xff, 
+};
+QT_MOC_EXPORT_PLUGIN(CompassPanelPlugin, CompassPanelPlugin)
+#endif  // QT_MOC_EXPORT_PLUGIN_V2
+
+QT_WARNING_POP

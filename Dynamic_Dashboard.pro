@@ -1,15 +1,24 @@
 QT += core gui qml quick quickcontrols2 charts xml
-
 CONFIG += c++17 console
 CONFIG -= app_bundle
 
+TEMPLATE = app
+TARGET = Dynamic_Dashboard
+
 # ------------------------------------------------------
-# Include paths for your headers
+# Plugin Project (CompassPanelPlugin)
+# ------------------------------------------------------
+SUBDIRS += Dynamic_Dashboard/Plugins/CompassPanelPlugin
+
+# ------------------------------------------------------
+# Include paths
 # ------------------------------------------------------
 INCLUDEPATH += \
     Dynamic_Dashboard/Core \
     Dynamic_Dashboard/Models \
-    Dynamic_Dashboard/Plugins
+    Dynamic_Dashboard/Config \
+    Dynamic_Dashboard/UI \
+    Dynamic_Dashboard/Plugins/CompassPanelPlugin
 
 # ------------------------------------------------------
 # Source files
@@ -32,34 +41,40 @@ HEADERS += \
     Dynamic_Dashboard/Models/ForecastData.h \
     Dynamic_Dashboard/Models/InfoData.h \
     Dynamic_Dashboard/Models/PowerData.h \
-    Dynamic_Dashboard/Models/ThrusterData.h
+    Dynamic_Dashboard/Models/ThrusterData.h \
+    Dynamic_Dashboard/Plugins/CompassPanelPlugin/IPanelPlugin.h
 
 # ------------------------------------------------------
 # Resource files
 # ------------------------------------------------------
-RESOURCES += resources.qrc
+# Each resource file gets a unique compiled name
+    RESOURCES += \
+    Dynamic_Dashboard/resources.qrc \
+    Dynamic_Dashboard/Plugins/CompassPanelPlugin/compass_resources.qrc
+
+# Custom resource names to prevent "overriding recipe" warnings
+    QMAKE_RESOURCE_NAME += dashboard_resources
+    QMAKE_RESOURCE_NAME += plugin_resources
 
 # ------------------------------------------------------
-# QML import paths (ensures QtCharts plugin loads)
+# Distribution and configuration files
+# ------------------------------------------------------
+DISTFILES += \
+    Dynamic_Dashboard/Plugins/CompassPanelPlugin/plugin.json \
+    Dynamic_Dashboard/Config/Ui_Config.xml \
+    Dynamic_Dashboard/UI/main.qml \
+    Dynamic_Dashboard/UI/StatusPanel.qml
+
+# ------------------------------------------------------
+# QML import paths (ensure QtCharts works)
 # ------------------------------------------------------
 QML_IMPORT_PATH += $$[QT_INSTALL_QML]
 QML_DESIGNER_IMPORT_PATH += $$[QT_INSTALL_QML]
-
-# ------------------------------------------------------
-# Explicitly include QtCharts plugin for deployment
-# ------------------------------------------------------
 QML_IMPORT_PATH += $$[QT_INSTALL_PREFIX]/qml/QtCharts
 
 # ------------------------------------------------------
-# Deployment rules
+# Deployment paths
 # ------------------------------------------------------
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-# ------------------------------------------------------
-# Extra files to include (non-QML configs)
-# ------------------------------------------------------
-DISTFILES += \
-    Dynamic_Dashboard/Config/Ui_Config.xml \
-    Dynamic_Dashboard/UI/StatusPanel.qml

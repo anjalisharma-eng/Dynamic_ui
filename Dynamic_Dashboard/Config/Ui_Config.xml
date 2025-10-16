@@ -3,17 +3,13 @@
     <!-- Compass panel loaded from plugin -->
     <Component source="qrc:/CompassPanelPlugin/CompassPanel.qml" row="0" col="0" rowSpan="2" />
 
-    <!-- Thruster panel next to compass -->
-    <Component source="qrc:/Dynamic_Dashboard/UI/ThrusterPanel.qml" row="0" col="1" />
+    <Component source="qrc:/ThusterPanelPlugin/ThrusterPanel.qml" row="0" col="1" />
 
-    <!-- Info panel below compass -->
-    <Component source="qrc:/Dynamic_Dashboard/UI/InfoPanel.qml" row="2" col="0" />
+    <Component source="qrc:/InfoPanelPlugin/InfoPanel.qml" row="2" col="0" />
 
-    <!-- Summary panel below thruster -->
-    <Component source="qrc:/Dynamic_Dashboard/UI/SummaryPanel.qml" row="1" col="1" />
+    <Component source="qrc:/SummaryPanelPlugin/SummaryPanel.qml" row="1" col="1" />
 
-    <!-- Power panel at the bottom-right -->
-    <Component source="qrc:/Dynamic_Dashboard/UI/PowerPanel.qml" row="2" col="1" />
+    <Component source="qrc:/PowerPanelPlugin/PowerPanel.qml" row="2" col="1" />
 
     <!-- Optional: Add additional panels like Forecast or Graph here -->
     <!-- <Component source="qrc:/Dynamic_Dashboard/UI/ForecastPanel.qml" row="3" col="0" /> -->

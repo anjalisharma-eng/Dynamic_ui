@@ -46,7 +46,7 @@ ApplicationWindow {
             // Thruster — spans 3 rows, middle column
             Loader {
                 id: thrusterPanel
-                source: "qrc:/Dynamic_Dashboard/UI/ThrusterPanel.qml"
+                source: "qrc:/ThrusterPanelPlugin/ThrusterPanel.qml"
                 Layout.row: 0
                 Layout.column: 1
                 Layout.rowSpan: 3
@@ -58,31 +58,31 @@ ApplicationWindow {
             // Power — bottom left (smaller height)
             Loader {
                 id: powerPanel
-                source: "qrc:/Dynamic_Dashboard/UI/PowerPanel.qml"
+                source: "qrc:/PowerPanelPlugin/PowerPanel.qml"
                 Layout.row: 3
                 Layout.column: 0
                 Layout.fillWidth: true
                 Layout.fillHeight: false
                 Layout.preferredWidth: parent.width * 0.40
-                Layout.preferredHeight: parent.height * 0.18   // smaller bottom row
+                Layout.preferredHeight: parent.height * 0.18
             }
 
             // Info — bottom middle (same smaller height)
             Loader {
                 id: infoPanel
-                source: "qrc:/Dynamic_Dashboard/UI/InfoPanel.qml"
+                source: "qrc:/InfoPanelPlugin/InfoPanel.qml"
                 Layout.row: 3
                 Layout.column: 1
                 Layout.fillWidth: true
                 Layout.fillHeight: false
                 Layout.preferredWidth: parent.width * 0.38
-                Layout.preferredHeight: parent.height * 0.18   // same height
+                Layout.preferredHeight: parent.height * 0.18
             }
 
             // System Summary — right column, spans all rows
             Loader {
                 id: summaryPanel
-                source: "qrc:/Dynamic_Dashboard/UI/SummaryPanel.qml"
+                source: "qrc:/SummaryPanelPlugin/SummaryPanel.qml"
                 Layout.row: 0
                 Layout.column: 2
                 Layout.rowSpan: 4

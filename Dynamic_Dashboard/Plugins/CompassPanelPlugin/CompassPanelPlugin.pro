@@ -4,7 +4,9 @@ TEMPLATE = lib
 CONFIG += plugin c++17
 TARGET = CompassPanelPlugin
 
-INCLUDEPATH += ../../Models
+INCLUDEPATH += $$PWD/../ \
+               $$PWD/../../Core \
+               $$PWD/../../Models
 
 SOURCES += plugin.cpp
 HEADERS += IPanelPlugin.h

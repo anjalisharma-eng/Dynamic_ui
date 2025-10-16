@@ -2,12 +2,6 @@
     <qresource prefix="/Dynamic_Dashboard">
         <file>UI/main.qml</file>
         <file>UI/StatusPanel.qml</file>
-        <file>UI/ThrusterPanel.qml</file>
-        <file>UI/PowerPanel.qml</file>
-        <file>UI/InfoPanel.qml</file>
-        <file>UI/BarGraphPanel.qml</file>
-        <file>UI/ForecastPanel.qml</file>
-        <file>UI/SummaryPanel.qml</file>
         <file>Config/Ui_Config.xml</file>
         <file>CompasDial.png</file>
     </qresource>

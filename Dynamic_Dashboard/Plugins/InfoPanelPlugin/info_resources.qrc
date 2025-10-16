@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/InfoPanelPlugin">
+        <file>InfoPanel.qml</file>
+        <file>plugin.json</file>
+    </qresource>
+</RCC>

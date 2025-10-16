@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/ThrusterPanelPlugin">
+        <file>ThrusterPanel.qml</file>
+		<file>plugin.json</file>
+    </qresource>
+</RCC>

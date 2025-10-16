@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/PowerPanelPlugin">
+        <file>PowerPanel.qml</file>
+        <file>plugin.json</file>
+    </qresource>
+</RCC>
